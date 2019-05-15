@@ -5,15 +5,19 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+
 header{
     background: #BC3B69;
     border-radius: 10px 25px 25px 10px;
     padding: 15px;
     position: absolute;
-    width: 99%;
+    width: 97%;
     height: 50px;
     top: 0%;
 }
+
+::placeholder { color: #ffffff; } /* pseudo elemento */
+
 
 .entry{
     background-color:#c05e80;
@@ -31,10 +35,11 @@ header{
     background-color: #ffffff;
     border-radius: 150%;
     border: 0px;
-    top: 20px;
+    top: 15px;
     right: 80px;
     width: 50px;
     height: 50px;
+    cursor: pointer;
 }
 
 .notice{
@@ -49,6 +54,7 @@ color: #a5a3a3;
 /* LINEA QUE SEPARA EL TEXTO */
 hr{  
     width: 10%;
+    color: #d8e5e0;
 }
 
 
@@ -68,4 +74,52 @@ Fuente dentro del listado de tareas: #444 (lo que devuelve)
     height: 45px;
     margin-top: -70px;
     margin-left: 10px;
+    list-style:none;
+}
+
+/* ICONOS*/
+
+.trash{
+    position: absolute;
+    top: 15px;
+    right: 75px;
+    width: 50px;
+    height: 50px;
+}
+
+.trashtwo{
+    position: absolute;
+    top: 15px;
+    right: 75px;
+    width: 50px;
+    height: 50px;
+    visibility: hidden; /* ESCONDE */
+}
+
+.check{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 150%;
+    top: 15px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c05e80;
+} 
+
+
+.checktwo{
+    background-color: #BC3B69;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    border-radius: 150%;
+    top: 15px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c05e80; 
+    visibility: hidden; /* ESCONDE */
 }
