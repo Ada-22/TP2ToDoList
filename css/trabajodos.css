@@ -16,7 +16,7 @@ header{
     top: 0%;
 }
 
-::placeholder { color: #ffffff; } /* pseudo elemento */
+::placeholder { color: #ffffff; } /* pseudo elemento que da color al texto de entry */
 
 
 .entry{
@@ -58,8 +58,7 @@ hr{
 }
 
 
-/*
-Barra que divide tareas pendientes de completadas: #d8e5e0
+/* ESTO FALTA, ES EL COLOR DE LA FUENTE CUANDO SE IMPRIME EL LISTADO
 Fuente dentro del listado de tareas: #444 (lo que devuelve)
 */
 
@@ -93,7 +92,7 @@ Fuente dentro del listado de tareas: #444 (lo que devuelve)
     right: 75px;
     width: 50px;
     height: 50px;
-    visibility: hidden; /* ESCONDE */
+    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
 }
 
 .check{
@@ -121,5 +120,5 @@ Fuente dentro del listado de tareas: #444 (lo que devuelve)
     width: 20px;
     height: 20px;
     border: 1px solid #c05e80; 
-    visibility: hidden; /* ESCONDE */
+    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
 }
