@@ -13,9 +13,8 @@
 
 <body>
     <header>
-        <input class="entry" placeholder="Ingrese una tarea.." />
-        <button class="add"><i class="fas fa-plus"></i></button> <!-- Chicas, en esta parte va: <img src="img/add.svg"> 
-            el tema es que la imagen queda muy grande y no me gusta esteticamente, por eso puse la que esta. --> 
+        <input id="entryField" class="entry" placeholder="Ingrese una tarea..." type="text"/>
+        <button id="entryBtn" class="add" type="button"><img src="img/add.svg"></button>
     </header>
 
 
@@ -23,20 +22,21 @@
     <div class="notice">
 
         <!--APARECE CUANDO INGRESAMOS ALGO X-->
-        <ul class="answer">
-            <li></li>
-        <!--iconos en reposo-->
-            <a href="#" class="trash"><img src="img/remove.svg"></a>
-            <a href="#" class="check"><img src="img/done.svg"></a> 
-
-            <a href="#" class="trashtwo"><img src="img/removehover.svg"></a>
-            <a href="#" class="checktwo"><img src="img/donewhite.svg"></a>
-        <!--Iconos cuando pasamos el cursor o hacemos click-->
+        <ul id="uncompletedTasks" class="answer">
+            <li>Tarea Incompleta 1
+                <a href="#" class="trash"><img src="img/remove.svg"></a>
+                <a href="#" class="check"><img src="img/donewhite.svg"></a>
+            </li>
         </ul>
         <!--HASTA ACA X-->
-
         <p>¡No hay tareas pendientes!</p>
         <hr> <!--BARRITA QUE SEPARA EL TEXTO-->
+        <ul id="completedTasks" class="answer">
+            <li>Tarea Completada 1
+                <a href="#" class="trash"><img src="img/remove.svg"></a>
+                <a href="#" class="checked"><img src="img/done.svg"></a>
+            </li>
+        </ul>
         <p>Todavía no completaste ninguna tarea.</p>
     </div>
 

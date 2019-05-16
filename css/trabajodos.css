@@ -1,124 +1,54 @@
-
-body{
-    background-color: #edf0f1;
-    margin: 10px 0 50px; 
-    font-family: 'Roboto', sans-serif;
+@import "../css/reset.css";
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: #444;
+  background: #edf0f1;
+}
+body header {
+  background: #BC3B69;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  height: 80px;
+  top: 0;
+  display: block;
+}
+body header input.entry {
+  width: 100vw;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;
+  float: left;
+  text-indent: 1rem;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem 4rem 1rem 1rem;
+}
+body header input.entry::placeholder {
+  color: #fff !important;
+}
+body header button.add {
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  float: right;
+  right: 1rem;
+  top: 1rem;
+  background: #fff;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+body header button.add img {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: auto;
 }
 
-
-header{
-    background: #BC3B69;
-    border-radius: 10px 25px 25px 10px;
-    padding: 15px;
-    position: absolute;
-    width: 97%;
-    height: 50px;
-    top: 0%;
-}
-
-::placeholder { color: #ffffff; } /* pseudo elemento que da color al texto de entry */
-
-
-.entry{
-    background-color:#c05e80;
-    font-size: 15px;
-    text-indent: 18px;
-    color: #ffffff;
-    border-radius: 5px 25px 25px 5px; 
-    border: 0px;
-    width: 95%;
-    height: 45px;
-}
-
-.add{
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 150%;
-    border: 0px;
-    top: 15px;
-    right: 80px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.notice{
-display: block;
-position: relative;
-text-align: center;
-margin-top: 160px;
-color: #a5a3a3;
-
-}
-
-/* LINEA QUE SEPARA EL TEXTO */
-hr{  
-    width: 10%;
-    color: #d8e5e0;
-}
-
-
-/* ESTO FALTA, ES EL COLOR DE LA FUENTE CUANDO SE IMPRIME EL LISTADO
-Fuente dentro del listado de tareas: #444 (lo que devuelve)
-*/
-
-.answer{
-    background-color:#ffffff;
-    font-size: 15px;
-    text-indent: 18px;
-    color: #000000;
-    border-radius: 5px 5px 5px 5px; 
-    border: 0px;
-    width: 95%;
-    height: 45px;
-    margin-top: -70px;
-    margin-left: 10px;
-    list-style:none;
-}
-
-/* ICONOS*/
-
-.trash{
-    position: absolute;
-    top: 15px;
-    right: 75px;
-    width: 50px;
-    height: 50px;
-}
-
-.trashtwo{
-    position: absolute;
-    top: 15px;
-    right: 75px;
-    width: 50px;
-    height: 50px;
-    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
-}
-
-.check{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 150%;
-    top: 15px;
-    right: 40px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #c05e80;
-} 
-
-
-.checktwo{
-    background-color: #BC3B69;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    border-radius: 150%;
-    top: 15px;
-    right: 40px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #c05e80; 
-    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
-}
+/*# sourceMappingURL=trabajodos.css.map */
