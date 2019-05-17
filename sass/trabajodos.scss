@@ -2,76 +2,151 @@
 @import "../css/reset.css";
 
 // variables
+$gralFontColor:#ccc; 
 $redBold:#BC3B69;
 $entryBg:rgba(255, 255, 255, 0.2);
 $entryFontColor: #fff;
 $greyBg: #edf0f1;
 $greyDivider: #d8e5e0;
 $taskFont: #444;
+$taskBg:#fff;
 $font:'Roboto', sans-serif;
 $titleSize: 32px;
-$fS: 15px;
+$fS: 16px;
+$lineH: 50px;
+
+// mixins
+@mixin btnStyle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    width: $lineH;
+    height: $lineH;
+    background: #fff;
+}
 
 // estilos generales del body
 body{
     font-family: $font;
     font-size: $fS;
-    color: $taskFont;
+    color: $gralFontColor;
     background: $greyBg;
     // estilos para la barra de escritura de las tareas
     header{
         background:$redBold;
-        border-radius: 0 0 1rem 1rem;
+        border-radius: 0 0 $fS $fS;
         // padding: 1rem;
         width: 100vw;
-        height: 80px;
+        height: $lineH + 2*$fS;
         // position: fixed;
         top: 0;
+        margin: 0 0 $fS 0;
         // display: block;
         div{ 
             // uso este div para lograr posicionar correctamente el input y resolver el positio - que me estaba asignando
             position: absolute;
             float: left;
-            margin: 15px 0;
-            left: 15px;
-            right: 15px;
+            margin: $fS 0;
+            left: $fS;
+            right: $fS;
             display: block;
                 input.entry{
-                box-sizing: border-box;
-                width: 100%;
-                height: 50px;
-                background-color: $entryBg;
-                border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;    
-                text-indent: 1rem;
-                margin: 0;
-                outline: none;
-                border: none;
-                &::placeholder{
-                    color: $entryFontColor !important;
+                    font-family: $font !important;
+                    font-size: $fS;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: $lineH;
+                    background-color: $entryBg;
+                    border-radius: 0.5*$fS 1.5*$fS 1.5*$fS 0.5*$fS;    
+                    text-indent: 1*$fS;
+                    margin: 0;
+                    outline: none;
+                    border: none;
+                    &:focus{
+                        color: $entryFontColor;
+                    }
+                    &::placeholder{
+                        color: $entryFontColor !important;
                 }
             }
         }   
         button.add{     
-            border: none;
-            width: 50px;
-            height: 50px;
+            @include btnStyle();
             border-radius: 50%;
             position: absolute;
             float: right;
-            right: 15px;
-            top: 15px;
-            background: #fff;
-            padding: 0;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            margin: 0;
+            right: $fS;
+            top: $fS;
+
             // background-image: url(img/add.svg) center no-repeat 25px 25px !important;   
             img{
-                width: 20px;
-                height: 20px;
+                width: $fS;
+                height: $fS;
                 display: inline-block;
                 margin: auto;
             }
         }
+    }
+    .notice{
+        padding: 0 $fS;
+        #unDoneTasks{
+            div {
+                display: block;
+                width: 100%;
+                height: $lineH;
+                background-color: $taskBg !important;
+                border-radius: 0.5*$fS !important;
+                margin: $fS 0;
+                color: $taskFont;
+                text-indent: $fS;
+                line-height: $lineH;
+                position: relative;
+                .trash {
+                    @include btnStyle();
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    position: absolute;
+                    float: right;
+                    right: $lineH;
+                    top: 0;
+                }
+                .check {
+                    @include btnStyle();
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    position: absolute;
+                    float: right;
+                    right: 0;
+                    top: 0;
+                    // width: 22px;
+                    // height: 22px;
+                    // border: 1px solid $taskBg;
+                    img{
+                        width:10px;
+                        height:10px; 
+                        padding: 5px;
+                        border: 1px solid $redBold;
+                        border-radius:50%;
+                        object-position: center;
+                    }
+                }
+
+            }
+        }
+        p.msg{
+            font-size: 0.75*$fS;
+            text-align: center;
+            display: block;
+            margin: 2*$fS auto 0;
+        }
+    }
+    hr{
+        border: 0;
+        height: 1px;
+        background-color: $greyDivider;
+        // background-image: linear-gradient(to right, $greyDivider,  #d8e5e0c7, $greyDivider);
+        width: 200px;
+        margin: 2*$fS auto;
     }
 }

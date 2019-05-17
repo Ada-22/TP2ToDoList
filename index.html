@@ -21,25 +21,34 @@
 
 
 
-    <div class="notice">
+    <div class="notice"> <!-- porqué la clase es notice? -->
 
         <!--APARECE CUANDO INGRESAMOS ALGO X-->
-        <ul id="uncompletedTasks" class="answer">
-            <li>Tarea Incompleta 1
-                <a href="#" class="trash"><img src="img/remove.svg"></a>
-                <a href="#" class="check"><img src="img/donewhite.svg"></a>
-            </li>
-        </ul>
+        <div id="unDoneTasks" class="answer"> <!-- porqué la clase es answer -->
+            <div class="unDone">Tarea Incompleta 1
+                <!-- cambio a por button por semantica y el evento onclick -->
+                <button class="trash"><img src="img/remove.svg"></button>
+                <button class="check"><img src="img/done.svg"></button>
+            </div>
+            <div class="unDone">Tarea Incompleta 1
+                <button class="trash"><img src="img/remove.svg"></button>
+                <button class="check"><img src="img/done.svg"></button>
+            </div>
+        </div>
         <!--HASTA ACA X-->
-        <p>¡No hay tareas pendientes!</p>
+        <p class="msg">¡No hay tareas pendientes!</p>
         <hr> <!--BARRITA QUE SEPARA EL TEXTO-->
-        <ul id="completedTasks" class="answer">
-            <li>Tarea Completada 1
+        <ul id="doneTasks" class="answer">
+            <!-- <li class="done">Tarea Completada 1
                 <a href="#" class="trash"><img src="img/remove.svg"></a>
                 <a href="#" class="checked"><img src="img/done.svg"></a>
             </li>
+            <li class="done">Tarea completada 2
+                <a href="#" class="trash"><img src="img/remove.svg"></a>
+                <a href="#" class="check"><img src="img/donewhite.svg"></a>
+            </li> -->
         </ul>
-        <p>Todavía no completaste ninguna tarea.</p>
+        <p class="msg">Todavía no completaste ninguna tarea.</p>
     </div>
 
 </body>
