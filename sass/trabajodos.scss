@@ -23,29 +23,34 @@ body{
         background:$redBold;
         border-radius: 0 0 1rem 1rem;
         // padding: 1rem;
-        width: 100%;
+        width: 100vw;
         height: 80px;
         // position: fixed;
         top: 0;
-        display: block;
-        input.entry{
-            width: 100vw;
-            height: 50px;
-            background-color: $entryBg;
-            border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;
-            float: left;
-            text-indent: 1rem;
-            // padding: 0 4rem 0 0;
-            outline: none;
-            border: none;
+        // display: block;
+        div{ 
+            // uso este div para lograr posicionar correctamente el input y resolver el positio - que me estaba asignando
             position: absolute;
-            top:0;
-            left: 0;
-            margin: 1rem 4rem 1rem 1rem;
-            &::placeholder{
-                color: $entryFontColor !important;
+            float: left;
+            margin: 15px 0;
+            left: 15px;
+            right: 15px;
+            display: block;
+                input.entry{
+                box-sizing: border-box;
+                width: 100%;
+                height: 50px;
+                background-color: $entryBg;
+                border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;    
+                text-indent: 1rem;
+                margin: 0;
+                outline: none;
+                border: none;
+                &::placeholder{
+                    color: $entryFontColor !important;
+                }
             }
-        }
+        }   
         button.add{     
             border: none;
             width: 50px;
@@ -53,12 +58,13 @@ body{
             border-radius: 50%;
             position: absolute;
             float: right;
-            right: 1rem;
-            top: 1rem;
+            right: 15px;
+            top: 15px;
             background: #fff;
             padding: 0;
             -webkit-appearance: none;
             -moz-appearance: none;
+            margin: 0;
             // background-image: url(img/add.svg) center no-repeat 25px 25px !important;   
             img{
                 width: 20px;
