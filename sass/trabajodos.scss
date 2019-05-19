@@ -16,7 +16,7 @@ $fS: 16px;
 $lineH: 50px;
 
 // mixins
-@mixin btnStyle {
+@mixin btnStyle($bgColor) {
     -webkit-appearance: none;
     -moz-appearance: none;
     margin: 0;
@@ -25,7 +25,7 @@ $lineH: 50px;
     border: none;
     width: $lineH;
     height: $lineH;
-    background: #fff;
+    background:$bgColor;
 }
 
 // estilos generales del body
@@ -74,7 +74,7 @@ body{
             }
         }   
         button.add{     
-            @include btnStyle();
+            @include btnStyle($taskBg);
             border-radius: 50%;
             position: absolute;
             float: right;
@@ -105,7 +105,7 @@ body{
                 line-height: $lineH;
                 position: relative;
                 .trash {
-                    @include btnStyle();
+                    @include btnStyle($taskBg);
                     // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
                     position: absolute;
                     float: right;
@@ -113,8 +113,9 @@ body{
                     top: 0;
                 }
                 .check {
-                    @include btnStyle();
+                    @include btnStyle($taskBg);
                     // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    border-radius: 0 50% 50% 0;
                     position: absolute;
                     float: right;
                     right: 0;
@@ -129,6 +130,12 @@ body{
                         border: 1px solid $redBold;
                         border-radius:50%;
                         object-position: center;
+                    }
+                    &:hover{
+                        img{
+                            // background-color: 
+                            background: #BC3B69 url("../img/donewhite.svg") center/10px 10px no-repeat;
+                        }
                     }
                 }
             }
