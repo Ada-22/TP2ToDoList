@@ -27,27 +27,40 @@
         <div id="unDoneTasks" class="answer"> <!-- porqué la clase es answer -->
             <div class="unDone">Tarea Incompleta 1
                 <!-- cambio a por button por semantica y el evento onclick -->
-                <button class="trash"><img src="img/remove.svg"></button>
-                <button class="check"><img src="img/done.svg"></button>
+                <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
+                <button class="check"><i class="taskStatus fa fa-check"></i></button>
             </div>
             <div class="unDone">Tarea Incompleta 1
-                <button class="trash"><img src="img/remove.svg"></button>
-                <button class="check"><img src="img/done.svg"></button>
+                <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
+                <button class="check"><i class="taskStatus fa fa-check"></i></button>
             </div>
         </div>
         <!--HASTA ACA X-->
         <p class="msg">¡No hay tareas pendientes!</p>
         <hr> <!--BARRITA QUE SEPARA EL TEXTO-->
-        <ul id="doneTasks" class="answer">
-            <!-- <li class="done">Tarea Completada 1
+        <div id="DoneTasks" class="answer"> <!-- porqué la clase es answer -->
+            <div class="task">Tarea completada 1
+                <!-- cambio a por button por semantica y el evento onclick -->
+                <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
+                <button class="check"><i class="taskStatus fa fa-check"></i></button>
+            </div>
+            <div class="task">Tarea completada 1
+                <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
+                <button class="check"><i class="taskStatus fa fa-check"></i></button>
+            </div>
+        </div>
+        
+        
+        <!-- <ul id="doneTasks" class="answer">
+            <li class="done">Tarea Completada 1
                 <a href="#" class="trash"><img src="img/remove.svg"></a>
                 <a href="#" class="checked"><img src="img/done.svg"></a>
             </li>
             <li class="done">Tarea completada 2
                 <a href="#" class="trash"><img src="img/remove.svg"></a>
                 <a href="#" class="check"><img src="img/donewhite.svg"></a>
-            </li> -->
-        </ul>
+            </li>
+        </ul> -->
         <p class="msg">Todavía no completaste ninguna tarea.</p>
     </div>
 

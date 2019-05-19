@@ -91,6 +91,14 @@ body .notice #unDoneTasks div .trash {
   float: right;
   right: 50px;
   top: 0;
+  border-right: 1px solid #edf0f1;
+}
+body .notice #unDoneTasks div .trash .trashIcon {
+  font-size: 22px;
+  color: #ccc;
+}
+body .notice #unDoneTasks div .trash:hover i.trashIcon {
+  color: #BC3B69;
 }
 body .notice #unDoneTasks div .check {
   -webkit-appearance: none;
@@ -107,22 +115,95 @@ body .notice #unDoneTasks div .check {
   float: right;
   right: 0;
   top: 0;
+  border-left: 1px #edf0f1;
 }
-body .notice #unDoneTasks div .check img {
-  width: 10px;
-  height: 10px;
-  padding: 5px;
-  border: 1px solid #BC3B69;
+body .notice #unDoneTasks div .check i.taskStatus {
+  color: #BC3B69;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 6px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #BC3B69;
   border-radius: 50%;
-  object-position: center;
 }
-body .notice #unDoneTasks div .check:hover img {
-  background: #BC3B69 url("../img/donewhite.svg") center/10px 10px no-repeat;
+body .notice #unDoneTasks div .check:hover i.taskStatus {
+  color: #fff;
+  background-color: rgba(212, 102, 140, 0.748);
+  transition: background-color 1seg ease;
+}
+body .notice #DoneTasks div {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  margin: 16px 0;
+  color: #444;
+  text-indent: 16px;
+  line-height: 50px;
+  position: relative;
+}
+body .notice #DoneTasks div .trash {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  float: right;
+  right: 50px;
+  top: 0;
+  border-right: 1px solid #edf0f1;
+  transition: color 0.5seg ease;
+}
+body .notice #DoneTasks div .trash .trashIcon {
+  font-size: 22px;
+  color: #ccc;
+}
+body .notice #DoneTasks div .trash:hover i.trashIcon {
+  color: #BC3B69;
+}
+body .notice #DoneTasks div .check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+}
+body .notice #DoneTasks div .check i.taskStatus {
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 6px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #BC3B69;
+  border-radius: 50%;
+  background-color: #BC3B69;
+  transition: background-color 0.5seg ease;
+}
+body .notice #DoneTasks div .check:hover i.taskStatus {
+  color: #fff;
+  background-color: rgba(212, 102, 140, 0.748);
 }
 body .notice p.msg {
   font-size: 12px;
   text-align: center;
-  display: block;
+  display: none;
   margin: 32px auto 0;
 }
 body hr {

@@ -111,6 +111,16 @@ body{
                     float: right;
                     right: $lineH;
                     top: 0;
+                    border-right: 1px solid $greyBg; 
+                    .trashIcon{
+                        font-size: 22px;
+                        color: $gralFontColor;    
+                    }
+                    &:hover{
+                        i.trashIcon{
+                            color: #BC3B69;
+                        }
+                    }
                 }
                 .check {
                     @include btnStyle($taskBg);
@@ -120,21 +130,83 @@ body{
                     float: right;
                     right: 0;
                     top: 0;
-                    // width: 22px;
-                    // height: 22px;
-                    // border: 1px solid $taskBg;
-                    img{
-                        width:10px;
-                        height:10px; 
-                        padding: 5px;
-                        border: 1px solid $redBold;
-                        border-radius:50%;
-                        object-position: center;
+                    border-left: 1px $greyBg;
+
+                    i.taskStatus{
+                        color: $redBold;
+                        font-size: 10px;
+                        line-height: 16px;
+                        padding: 6px;
+                        width: 16px;
+                        height: 16px;
+                        border: 1.5px solid $redBold;
+                        border-radius: 50%;
                     }
                     &:hover{
-                        img{
-                            // background-color: 
-                            background: #BC3B69 url("../img/donewhite.svg") center/10px 10px no-repeat;
+                        i.taskStatus{
+                            color: #fff;
+                            background-color: rgba(212, 102, 140, 0.748);
+                            transition: background-color 1seg ease;
+                        }
+                    }
+                }
+            }
+        }
+        #DoneTasks{
+            div {
+                display: block;
+                width: 100%;
+                height: $lineH;
+                background-color: $taskBg !important;
+                border-radius: 0.5*$fS !important;
+                margin: $fS 0;
+                color: $taskFont;
+                text-indent: $fS;
+                line-height: $lineH;
+                position: relative;
+                .trash {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    position: absolute;
+                    float: right;
+                    right: $lineH;
+                    top: 0;
+                    border-right: 1px solid $greyBg; 
+                    transition: color 0.5seg ease;
+                    .trashIcon{
+                        font-size: 22px;
+                        color: $gralFontColor;    
+                    }
+                    &:hover{
+                        i.trashIcon{
+                            color: #BC3B69;
+                        }
+                    }
+                }
+                .check {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    border-radius: 0 50% 50% 0;
+                    position: absolute;
+                    float: right;
+                    right: 0;
+                    top: 0;
+                    i.taskStatus{
+                        color: $taskBg;
+                        font-size: 10px;
+                        line-height: 16px;
+                        padding: 6px;
+                        width: 16px;
+                        height: 16px;
+                        border: 1.5px solid $redBold;
+                        border-radius: 50%;
+                        background-color: $redBold;
+                        transition: background-color 0.5seg ease;
+                    }
+                    &:hover{
+                        i.taskStatus{
+                            color: #fff;
+                            background-color: rgba(212, 102, 140, 0.748);
                         }
                     }
                 }
@@ -143,7 +215,7 @@ body{
         p.msg{
             font-size: 0.75*$fS;
             text-align: center;
-            display: block;
+            display: none;
             margin: 2*$fS auto 0;
         }
     }
