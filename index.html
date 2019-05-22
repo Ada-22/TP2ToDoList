@@ -9,14 +9,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="js/todo.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body onload="printMsgs()">
     <header>
         <div>
             <input id="entryField" class="entry" placeholder="Ingrese una tarea..." type="text"/>
         </div>
-        <button id="entryBtn" class="add" type="button"><img src="img/add.svg"></button>
+        <button id="entryBtn" class="add" type="button" onclick="addTask()"><img src="img/add.svg"></button>
     </header>
 
 
@@ -25,29 +26,27 @@
 
         <!--APARECE CUANDO INGRESAMOS ALGO X-->
         <div id="unDoneTasks" class="answer"> <!-- porqué la clase es answer -->
-            <div class="unDone">Tarea Incompleta 1
-                <!-- cambio a por button por semantica y el evento onclick -->
+            <!-- <div class="unDone">Tarea Incompleta 1
                 <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
                 <button class="check"><i class="taskStatus fa fa-check"></i></button>
             </div>
             <div class="unDone">Tarea Incompleta 1
                 <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
                 <button class="check"><i class="taskStatus fa fa-check"></i></button>
-            </div>
+            </div> -->
         </div>
         <!--HASTA ACA X-->
-        <p class="msg">¡No hay tareas pendientes!</p>
+        <p id="unDoneMsg" class="msg">¡No hay tareas pendientes!</p>
         <hr> <!--BARRITA QUE SEPARA EL TEXTO-->
         <div id="DoneTasks" class="answer"> <!-- porqué la clase es answer -->
-            <div class="task">Tarea completada 1
-                <!-- cambio a por button por semantica y el evento onclick -->
+            <!-- <div class="task">Tarea completada 1
                 <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
                 <button class="check"><i class="taskStatus fa fa-check"></i></button>
             </div>
             <div class="task">Tarea completada 1
                 <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
                 <button class="check"><i class="taskStatus fa fa-check"></i></button>
-            </div>
+            </div> -->
         </div>
         
         
@@ -61,7 +60,7 @@
                 <a href="#" class="check"><img src="img/donewhite.svg"></a>
             </li>
         </ul> -->
-        <p class="msg">Todavía no completaste ninguna tarea.</p>
+        <p id="doneMsg" class="msg">Todavía no completaste ninguna tarea.</p>
     </div>
 
 </body>

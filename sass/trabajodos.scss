@@ -212,12 +212,12 @@ body{
                 }
             }
         }
-        p.msg{
-            font-size: 0.75*$fS;
-            text-align: center;
-            display: none;
-            margin: 2*$fS auto 0;
-        }
+    }
+    .msg{
+        font-size: 0.75*$fS;
+        text-align: center;
+        display: none;
+        margin: 2*$fS auto 0;
     }
     hr{
         border: 0;
