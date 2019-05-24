@@ -15,9 +15,9 @@
 <body onload="printMsgs()">
     <header>
         <div>
-            <input id="entryField" class="entry" placeholder="Ingrese una tarea..." type="text"/>
+            <input id="entryField" class="entry" placeholder="Ingrese una tarea..." type="text" onkeypress="keyPress(event)"/>
         </div>
-        <button id="entryBtn" class="add" type="button" onclick="addTask"><img src="img/add.svg"></button>
+        <button id="entryBtn" class="add" type="button" onclick="addTask()"><img src="img/add.svg"></button>
     </header>
 
 
@@ -38,7 +38,7 @@
         <!--HASTA ACA X-->
         <p id="unDoneMsg" class="msg">¡No hay tareas pendientes!</p>
         <hr> <!--BARRITA QUE SEPARA EL TEXTO-->
-        <div id="DoneTasks" class="answer"> <!-- porqué la clase es answer -->
+        <div id="doneTasks" class="answer"> <!-- porqué la clase es answer -->
             <!-- <div class="task">Tarea completada 1
                 <button class="trash"><i class="trashIcon far fa-trash-alt"></i></button>
                 <button class="check"><i class="taskStatus fa fa-check"></i></button>
