@@ -4,8 +4,8 @@ var doneTasksList
 var unDoneTasksList
 
 tasksList = [
-    {text:'tarea 1 - generar variables',isDone:true},
-    {text:'tarea 2 - imprimir tareas',isDone:false}
+        {text:'tarea 1 - generar variables',isDone:true},
+        {text:'tarea 2 - imprimir tareas',isDone:false}
 ]
 
 
@@ -18,39 +18,48 @@ var addTask = function(){
         tasksList.unshift({text:taskText,isDone:false})
         printItems()
     }
-
-
-    // var unDoneTasksList = document.getElementById('unDoneTasks')
-    
-    // var newTask = createItem(taskText,'UnDone')
-    // unDoneTasksList.appendChild(newTask)
-    // entryTask.value=""
-    // // console.log(newTask)
-    // // return newTask
+//     var unDoneTasksList = document.getElementById('unDoneTasks')    
+//     var newTask = createItem(taskText,'UnDone')
+//     unDoneTasksList.appendChild(newTask)
 }
 
-// var setNode = function(nodeName){
-//     var nodeName = document.getElementById(nodeName)
-//     nodeName.innerHTML = ''
-//     return nodeName
-// }
+var deleteTask = function (btn) {
+    tasksList.splice(btn.id, 1)
+    printItems()
+}
+
+var taskToggle = function (btn) {
+    // debugger;
+    tasksList[btn.id].isDone = !tasksList[btn.id].isDone
+    printItems()
+}
+
+var setNode = function(nodeName){
+    var nodeName = document.getElementById(nodeName)
+    nodeName.innerHTML = ''
+    return nodeName
+}
 
 var loadTasks = function(){
     doneTasksList = []
     unDoneTasksList = []
-    tasksList.map(function(task){
-        debugger;
+    tasksList.map(function(task, index){
+        var myId = index
+        // debugger;
         if (task.isDone){
-            debugger;
+            // debugger;
             doneTasksList.unshift(task)
+            doneTasksList.id = myId
             console.log(doneTasksList)
         } else{
             console.log(unDoneTasksList)
-            debugger;
+            // debugger;
             unDoneTasksList.push(task)
+            unDoneTasksList.id = myId
             console.log(unDoneTasksList)  
         }
     })
+
     return doneTasksList, unDoneTasksList;
 }
 
@@ -60,28 +69,31 @@ var keyPress = function (event){
     }
 }
 
-
-
-var createItem = function(text,itemClass){
-    console.log (text , itemClass)
+var createItem = function(text,itemClass,taskId){
+    console.log (text,itemClass)
     // debugger;
     var taskDiv = document.createElement('div')
     taskDiv.innerText = text
     taskDiv.classList = itemClass
-    var btnTrash = (createBtn('trash','trashIcon far fa-trash-alt'))
-    var btnCheck = (createBtn('check','taskStatus fa fa-check'))
+    var btnTrash = (createBtn('trash','trashIcon far fa-trash-alt',taskId,deleteTask))
+    var btnCheck = (createBtn('check','taskStatus fa fa-check',taskId,taskToggle))
     taskDiv.appendChild(btnTrash)
     taskDiv.appendChild(btnCheck)
-    return taskDiv
+    return taskDiv;
 }
 
-var createBtn = function(btnClass,iconClass){
+var createBtn = function(btnClass,iconClass,taskId,btnFunction){
     // debugger;
     var btn = document.createElement('button')
+    btn.id = taskId
     btn.classList = btnClass
-    var icon= document.createElement('i')
+    // btn.setAttribute = ('onClick', btnFunction(this),false)
+    // btn.addEventListener('click',{btnFunction()}, true);
+    btn.onclick = function () { btnFunction(this) }
+    var icon = document.createElement('i')
     icon.classList = iconClass
     btn.appendChild(icon)
+    
     console.log(btn)
     return btn
 }
@@ -90,37 +102,60 @@ var createBtn = function(btnClass,iconClass){
 //     var icon = 
 // }
 
-var printMsgs = function(){
-    loadTasks()
-    if (!tasksList.length){
-        var doneMsg = document.getElementById('doneMsg')
-        var unDoneMsg = document.getElementById('unDoneMsg')
-        // console.log (doneMsg,unDoneMsg) con esto verificamos que establecemos bien los nodos
-        doneMsg.style.display = 'block'
-        unDoneMsg.style.display = 'block'
-    }else if (!doneTasksList.length){
-        var doneMsg = document.getElementById('doneMsg')
-        doneMsg.style.display = 'block'
-    }else if(!unDoneTasksList.length){
-        var unDoneMsg = document.getElementById('unDoneMsg')
-        unDoneMsg.style.display = 'block'
-    }
-    printItems()
-}
-
 var printItems = function(){
-    debugger;
-    var doneList = document.getElementById('doneTasks')
-    var unDoneList = document.getElementById('unDoneTasks')
-    console.log(doneList,unDoneList)
-    doneTasksList.map(function(task){
-        createItem(task.text,'done')
-    })
-    unDoneTasksList.map(function(task){
-        createItem(task.text,'unDone')
-    })
+    // debugger;
+    var doneTaskDiv = setNode('doneTasks')
+    var unDoneTaskDiv = setNode('unDoneTasks')
+    if (tasksList.length){
+        loadTasks()
+                if (unDoneTasksList.length && doneTasksList.length){
+            // debugger;
+            printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
+            printTasks(doneTaskDiv,doneTasksList,'done')
+            deleteMsg('unDoneMsg')
+            deleteMsg('doneMsg')
+            // doneTasksList.map(function(e){
+            //     var text = doneTasksList.text
+            //     var itemClass = 'done'
+            //     var taskId = doneTasksList.id
+            //     createItem(text,itemClass,taskId)
+            // })
+            // printTasks(unDoneTasksList,'unDone')            
+        } else if(!unDoneTasksList.length){
+            // debugger;
+            printMsg('unDoneMsg')
+            deleteMsg('doneMsg')
+            printTasks(doneTaskDiv,doneTasksList,'done')
+        } else if(!doneTasksList.length){
+            // debugger;
+            printMsg('doneMsg')
+            deleteMsg('unDoneMsg')
+            printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
+        }
+    } else{
+        printMsg('unDoneMsg')
+        printMsg('doneMsg')
+    }
 }
 
-var deleteTask = function (){
+var printMsg = function(msgId){
+    var msg = document.getElementById(msgId)
+    msg.style.display='block'
+}
 
+var deleteMsg = function(msgId){
+    var msg = document.getElementById(msgId)
+    msg.style.display='none'
+}
+
+var printTasks = function(nodeName,taskList,taskClass){
+    // debugger;
+    // var currentNode = setNode(nodeName)
+    taskList.map(function(e){
+        var text = e.text
+        var itemClass = taskClass
+        var taskId = taskList.id
+        // debugger;
+        nodeName.appendChild(createItem(text,itemClass,taskId))
+    })
 }
