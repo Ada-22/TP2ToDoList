@@ -3,24 +3,17 @@ var newTask
 var doneTasksList
 var unDoneTasksList
 
-tasksList = [
-        {text:'tarea 1 - generar variables',isDone:true},
-        {text:'tarea 2 - imprimir tareas',isDone:false}
-]
-
+tasksList = []
 
 var addTask = function(){
-    // debugger;
     var entryTask = document.getElementById('entryField')
     var taskText = entryTask.value
     if (taskText !== '' && taskText.length > 2){
         entryTask.value = ''
         tasksList.unshift({text:taskText,isDone:false})
+        console.log(tasksList)
         printItems()
     }
-//     var unDoneTasksList = document.getElementById('unDoneTasks')    
-//     var newTask = createItem(taskText,'UnDone')
-//     unDoneTasksList.appendChild(newTask)
 }
 
 var deleteTask = function (btn) {
@@ -29,6 +22,7 @@ var deleteTask = function (btn) {
 }
 
 var taskToggle = function (btn) {
+    console.log(btn)
     // debugger;
     tasksList[btn.id].isDone = !tasksList[btn.id].isDone
     printItems()
@@ -45,18 +39,14 @@ var loadTasks = function(){
     unDoneTasksList = []
     tasksList.map(function(task, index){
         var myId = index
+        task.id = myId
         // debugger;
         if (task.isDone){
-            // debugger;
             doneTasksList.unshift(task)
-            doneTasksList.id = myId
-            console.log(doneTasksList)
+            // doneTasksList.id = myId
         } else{
-            console.log(unDoneTasksList)
-            // debugger;
             unDoneTasksList.push(task)
-            unDoneTasksList.id = myId
-            console.log(unDoneTasksList)  
+            // unDoneTasksList.id = myId
         }
     })
 
@@ -70,8 +60,6 @@ var keyPress = function (event){
 }
 
 var createItem = function(text,itemClass,taskId){
-    console.log (text,itemClass)
-    // debugger;
     var taskDiv = document.createElement('div')
     taskDiv.innerText = text
     taskDiv.classList = itemClass
@@ -87,20 +75,17 @@ var createBtn = function(btnClass,iconClass,taskId,btnFunction){
     var btn = document.createElement('button')
     btn.id = taskId
     btn.classList = btnClass
-    // btn.setAttribute = ('onClick', btnFunction(this),false)
-    // btn.addEventListener('click',{btnFunction()}, true);
     btn.onclick = function () { btnFunction(this) }
-    var icon = document.createElement('i')
-    icon.classList = iconClass
+    var icon = createIcon (iconClass)
     btn.appendChild(icon)
-    
-    console.log(btn)
     return btn
 }
 
-// var createIcoon = function(iconClass){
-//     var icon = 
-// }
+var createIcon = function(iconClass){
+    var icon = document.createElement('i')
+    icon.classList = iconClass
+    return icon
+}
 
 var printItems = function(){
     // debugger;
@@ -108,26 +93,16 @@ var printItems = function(){
     var unDoneTaskDiv = setNode('unDoneTasks')
     if (tasksList.length){
         loadTasks()
-                if (unDoneTasksList.length && doneTasksList.length){
-            // debugger;
+        if (unDoneTasksList.length && doneTasksList.length){
             printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
             printTasks(doneTaskDiv,doneTasksList,'done')
             deleteMsg('unDoneMsg')
             deleteMsg('doneMsg')
-            // doneTasksList.map(function(e){
-            //     var text = doneTasksList.text
-            //     var itemClass = 'done'
-            //     var taskId = doneTasksList.id
-            //     createItem(text,itemClass,taskId)
-            // })
-            // printTasks(unDoneTasksList,'unDone')            
         } else if(!unDoneTasksList.length){
-            // debugger;
             printMsg('unDoneMsg')
             deleteMsg('doneMsg')
             printTasks(doneTaskDiv,doneTasksList,'done')
         } else if(!doneTasksList.length){
-            // debugger;
             printMsg('doneMsg')
             deleteMsg('unDoneMsg')
             printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
@@ -149,12 +124,10 @@ var deleteMsg = function(msgId){
 }
 
 var printTasks = function(nodeName,taskList,taskClass){
-    // debugger;
-    // var currentNode = setNode(nodeName)
     taskList.map(function(e){
         var text = e.text
         var itemClass = taskClass
-        var taskId = taskList.id
+        var taskId = e.id
         // debugger;
         nodeName.appendChild(createItem(text,itemClass,taskId))
     })
