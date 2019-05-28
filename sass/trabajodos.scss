@@ -216,17 +216,3 @@ body{
         margin: 2*$fS auto;
     }
 }
-@media only screen and (max-width: 768px) {
-    .msg{
-        font-size: $fS;
-        
-    }
-
- }
-@media only screen and (max-width: 320px) {
-    .msg{
-        font-size: 0.75*$fS;
-        
-    }
-
-}

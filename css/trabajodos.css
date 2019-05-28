@@ -218,15 +218,6 @@ body hr {
   margin: 32px auto;
 }
 
-@media only screen and (max-width: 768px) {
-  .msg {
-    font-size: 16px;
-  }
-}
-@media only screen and (max-width: 320px) {
-  .msg {
-    font-size: 12px;
-  }
-}
+
 
 /*# sourceMappingURL=trabajodos.css.map */
