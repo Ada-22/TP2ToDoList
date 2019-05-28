@@ -73,6 +73,7 @@ body .notice #unDoneTasks div {
   border-radius: 8px !important;
   margin: 16px 0;
   color: #444;
+  font-weight: bold;
   text-indent: 16px;
   line-height: 50px;
   position: relative;
@@ -140,6 +141,7 @@ body .notice #doneTasks div {
   border-radius: 8px !important;
   margin: 16px 0;
   color: #444;
+  font-weight: bold;
   text-indent: 16px;
   line-height: 50px;
   position: relative;
@@ -201,10 +203,12 @@ body .notice #doneTasks div .check:hover i.taskStatus {
   background-color: rgba(212, 102, 140, 0.748);
 }
 body .msg {
-  font-size: 12px;
+  font-size: 19.2px;
   text-align: center;
   display: none;
   margin: 32px auto 0;
+  font-weight: bold;
+  color: #BC3B69;
 }
 body hr {
   border: 0;
@@ -212,6 +216,17 @@ body hr {
   background-color: #d8e5e0;
   width: 200px;
   margin: 32px auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .msg {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .msg {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=trabajodos.css.map */
