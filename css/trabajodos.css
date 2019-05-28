@@ -1,124 +1,217 @@
-
-body{
-    background-color: #edf0f1;
-    margin: 10px 0 50px; 
-    font-family: 'Roboto', sans-serif;
+@import "../css/reset.css";
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #ccc;
+  background: #edf0f1;
+}
+body header {
+  background: #BC3B69;
+  border-radius: 0 0 16px 16px;
+  width: 100vw;
+  height: 82px;
+  top: 0;
+  margin: 0 0 16px 0;
+}
+body header div {
+  position: absolute;
+  float: left;
+  margin: 16px 0;
+  left: 16px;
+  right: 16px;
+  display: block;
+}
+body header div input.entry {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px 24px 24px 8px;
+  text-indent: 16px;
+  margin: 0;
+  outline: none;
+  border: none;
+}
+body header div input.entry:focus {
+  color: #fff;
+}
+body header div input.entry::placeholder {
+  color: #fff !important;
+}
+body header button.add {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  float: right;
+  right: 16px;
+  top: 16px;
+}
+body header button.add img {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin: auto;
+}
+body .notice {
+  padding: 0 16px;
+}
+body .notice #unDoneTasks div {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  margin: 16px 0;
+  color: #444;
+  text-indent: 16px;
+  line-height: 50px;
+  position: relative;
+}
+body .notice #unDoneTasks div .trash {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  float: right;
+  right: 50px;
+  top: 0;
+  border-right: 1px solid #edf0f1;
+}
+body .notice #unDoneTasks div .trash .trashIcon {
+  font-size: 22px;
+  color: #ccc;
+}
+body .notice #unDoneTasks div .trash:hover i.trashIcon {
+  color: #BC3B69;
+}
+body .notice #unDoneTasks div .check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+  border-left: 1px #edf0f1;
+}
+body .notice #unDoneTasks div .check i.taskStatus {
+  color: #BC3B69;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 6px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #BC3B69;
+  border-radius: 50%;
+}
+body .notice #unDoneTasks div .check:hover i.taskStatus {
+  color: #fff;
+  background-color: rgba(212, 102, 140, 0.748);
+  transition: background-color 1seg ease;
+}
+body .notice #doneTasks div {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  margin: 16px 0;
+  color: #444;
+  text-indent: 16px;
+  line-height: 50px;
+  position: relative;
+}
+body .notice #doneTasks div .trash {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  float: right;
+  right: 50px;
+  top: 0;
+  border-right: 1px solid #edf0f1;
+  transition: color 0.5seg ease;
+}
+body .notice #doneTasks div .trash .trashIcon {
+  font-size: 22px;
+  color: #ccc;
+}
+body .notice #doneTasks div .trash:hover i.trashIcon {
+  color: #BC3B69;
+}
+body .notice #doneTasks div .check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+}
+body .notice #doneTasks div .check i.taskStatus {
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 6px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #BC3B69;
+  border-radius: 50%;
+  background-color: #BC3B69;
+  transition: background-color 0.5seg ease;
+}
+body .notice #doneTasks div .check:hover i.taskStatus {
+  color: #fff;
+  background-color: rgba(212, 102, 140, 0.748);
+}
+body .msg {
+  font-size: 12px;
+  text-align: center;
+  display: none;
+  margin: 32px auto 0;
+}
+body hr {
+  border: 0;
+  height: 1px;
+  background-color: #d8e5e0;
+  width: 200px;
+  margin: 32px auto;
 }
 
-
-header{
-    background: #BC3B69;
-    border-radius: 10px 25px 25px 10px;
-    padding: 15px;
-    position: absolute;
-    width: 97%;
-    height: 50px;
-    top: 0%;
-}
-
-::placeholder { color: #ffffff; } /* pseudo elemento que da color al texto de entry */
-
-
-.entry{
-    background-color:#c05e80;
-    font-size: 15px;
-    text-indent: 18px;
-    color: #ffffff;
-    border-radius: 5px 25px 25px 5px; 
-    border: 0px;
-    width: 95%;
-    height: 45px;
-}
-
-.add{
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 150%;
-    border: 0px;
-    top: 15px;
-    right: 80px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.notice{
-display: block;
-position: relative;
-text-align: center;
-margin-top: 160px;
-color: #a5a3a3;
-
-}
-
-/* LINEA QUE SEPARA EL TEXTO */
-hr{  
-    width: 10%;
-    color: #d8e5e0;
-}
-
-
-/* ESTO FALTA, ES EL COLOR DE LA FUENTE CUANDO SE IMPRIME EL LISTADO
-Fuente dentro del listado de tareas: #444 (lo que devuelve)
-*/
-
-.answer{
-    background-color:#ffffff;
-    font-size: 15px;
-    text-indent: 18px;
-    color: #000000;
-    border-radius: 5px 5px 5px 5px; 
-    border: 0px;
-    width: 95%;
-    height: 45px;
-    margin-top: -70px;
-    margin-left: 10px;
-    list-style:none;
-}
-
-/* ICONOS*/
-
-.trash{
-    position: absolute;
-    top: 15px;
-    right: 75px;
-    width: 50px;
-    height: 50px;
-}
-
-.trashtwo{
-    position: absolute;
-    top: 15px;
-    right: 75px;
-    width: 50px;
-    height: 50px;
-    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
-}
-
-.check{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 150%;
-    top: 15px;
-    right: 40px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #c05e80;
-} 
-
-
-.checktwo{
-    background-color: #BC3B69;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    border-radius: 150%;
-    top: 15px;
-    right: 40px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #c05e80; 
-    visibility: hidden; /* ESCONDE EL ICONO PARA QUE NO SE PISEN */
-}
+/*# sourceMappingURL=trabajodos.css.map */

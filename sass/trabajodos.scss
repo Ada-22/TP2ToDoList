@@ -1,0 +1,219 @@
+// otras hojas de estilo como el css reset
+@import "../css/reset.css";
+
+// variables
+$gralFontColor:#ccc; 
+$redBold:#BC3B69;
+$entryBg:rgba(255, 255, 255, 0.2);
+$entryFontColor: #fff;
+$greyBg: #edf0f1;
+$greyDivider: #d8e5e0;
+$taskFont: #444;
+$taskBg:#fff;
+$font:'Roboto', sans-serif;
+$titleSize: 32px;
+$fS: 16px;
+$lineH: 50px;
+
+// mixins
+@mixin btnStyle($bgColor) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    width: $lineH;
+    height: $lineH;
+    background:$bgColor;
+}
+
+@mixin taskStyle(){
+    display: block;
+    width: 100%;
+    height: $lineH;
+    background-color: $taskBg !important;
+    border-radius: 0.5*$fS !important;
+    margin: $fS 0;
+    color: $taskFont;
+    text-indent: $fS;
+    line-height: $lineH;
+    position: relative;
+}
+
+// estilos generales del body
+body{
+    font-family: $font;
+    font-size: $fS;
+    color: $gralFontColor;
+    background: $greyBg;
+    header{
+        background:$redBold;
+        border-radius: 0 0 $fS $fS;
+        width: 100vw;
+        height: $lineH + 2*$fS;
+        top: 0;
+        margin: 0 0 $fS 0;
+        div{ 
+            // uso este div para lograr posicionar correctamente el input y resolver el positio - que me estaba asignando
+            position: absolute;
+            float: left;
+            margin: $fS 0;
+            left: $fS;
+            right: $fS;
+            display: block;
+            input.entry{
+                font-family: $font !important;
+                font-size: $fS;
+                box-sizing: border-box;
+                width: 100%;
+                height: $lineH;
+                background-color: $entryBg;
+                border-radius: 0.5*$fS 1.5*$fS 1.5*$fS 0.5*$fS;    
+                text-indent: 1*$fS;
+                margin: 0;
+                outline: none;
+                border: none;
+                &:focus{
+                    color: $entryFontColor;
+                }
+                &::placeholder{
+                    color: $entryFontColor !important;
+                }
+            }
+        }   
+        button.add{     
+            @include btnStyle($taskBg);
+            border-radius: 50%;
+            position: absolute;
+            float: right;
+            right: $fS;
+            top: $fS;
+            img{
+                width: $fS;
+                height: $fS;
+                display: inline-block;
+                margin: auto;
+            }
+        }
+    }
+    .notice{
+        padding: 0 $fS;
+        #unDoneTasks{
+            div {
+                @include taskStyle();
+                .trash {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    position: absolute;
+                    float: right;
+                    right: $lineH;
+                    top: 0;
+                    border-right: 1px solid $greyBg; 
+                    .trashIcon{
+                        font-size: 22px;
+                        color: $gralFontColor;    
+                    }
+                    &:hover{
+                        i.trashIcon{
+                            color: #BC3B69;
+                        }
+                    }
+                }
+                .check {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    border-radius: 0 50% 50% 0;
+                    position: absolute;
+                    float: right;
+                    right: 0;
+                    top: 0;
+                    border-left: 1px $greyBg;
+
+                    i.taskStatus{
+                        color: $redBold;
+                        font-size: 10px;
+                        line-height: 16px;
+                        padding: 6px;
+                        width: 16px;
+                        height: 16px;
+                        border: 1.5px solid $redBold;
+                        border-radius: 50%;
+                    }
+                    &:hover{
+                        i.taskStatus{
+                            color: #fff;
+                            background-color: rgba(212, 102, 140, 0.748);
+                            transition: background-color 1seg ease;
+                        }
+                    }
+                }
+            }
+        }
+        #doneTasks{
+            div {
+                @include taskStyle();
+                .trash {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    position: absolute;
+                    float: right;
+                    right: $lineH;
+                    top: 0;
+                    border-right: 1px solid $greyBg; 
+                    transition: color 0.5seg ease;
+                    .trashIcon{
+                        font-size: 22px;
+                        color: $gralFontColor;    
+                    }
+                    &:hover{
+                        i.trashIcon{
+                            color: #BC3B69;
+                        }
+                    }
+                }
+                .check {
+                    @include btnStyle($taskBg);
+                    // esto tengo que incluirlo en un mixin o ajustar el mixin general para pasarle las dimensiones
+                    border-radius: 0 50% 50% 0;
+                    position: absolute;
+                    float: right;
+                    right: 0;
+                    top: 0;
+                    i.taskStatus{
+                        color: $taskBg;
+                        font-size: 10px;
+                        line-height: 16px;
+                        padding: 6px;
+                        width: 16px;
+                        height: 16px;
+                        border: 1.5px solid $redBold;
+                        border-radius: 50%;
+                        background-color: $redBold;
+                        transition: background-color 0.5seg ease;
+                    }
+                    &:hover{
+                        i.taskStatus{
+                            color: #fff;
+                            background-color: rgba(212, 102, 140, 0.748);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .msg{
+        font-size: 0.75*$fS;
+        text-align: center;
+        display: none;
+        margin: 2*$fS auto 0;
+    }
+    hr{
+        border: 0;
+        height: 1px;
+        background-color: $greyDivider;
+        // background-image: linear-gradient(to right, $greyDivider,  #d8e5e0c7, $greyDivider);
+        width: 200px;
+        margin: 2*$fS auto;
+    }
+}

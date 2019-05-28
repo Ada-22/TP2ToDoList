@@ -1,26 +1,134 @@
-(function(){
-var list = document.getElementById("list");
-entry = document.getElementById("entry");
-btnNew = document.getElementById("add")
+var tasksList
+var newTask
+var doneTasksList
+var unDoneTasksList
 
+tasksList = []
 
-
-
-// eventos
-var agregarTarea = function(){
-    var tarea = entry.value;
-      nuevaTarea = document.createElement("li"),
-      enlace = document.createElement("a"),
-      contenido = document.createTextNode(tarea);
-
-
-};
-var eliminarTarea = function(){};
-
-btnNew.addeventListener("click", agregarTarea);
-
-
-for (var i=0; i<=list.children.length;i++){ // childrens elementos li
-list.children[i].addEventListener("click",eliminarTarea);
+var addTask = function(){
+    var entryTask = document.getElementById('entryField')
+    var taskText = entryTask.value
+    if (taskText !== '' && taskText.length > 2){
+        entryTask.value = ''
+        tasksList.unshift({text:taskText,isDone:false})
+        console.log(tasksList)
+        printItems()
+    }
 }
-}());
+
+var deleteTask = function (btn) {
+    tasksList.splice(btn.id, 1)
+    printItems()
+}
+
+var taskToggle = function (btn) {
+    console.log(btn)
+    // debugger;
+    tasksList[btn.id].isDone = !tasksList[btn.id].isDone
+    printItems()
+}
+
+var setNode = function(nodeName){
+    var nodeName = document.getElementById(nodeName)
+    nodeName.innerHTML = ''
+    return nodeName
+}
+
+var loadTasks = function(){
+    doneTasksList = []
+    unDoneTasksList = []
+    tasksList.map(function(task, index){
+        var myId = index
+        task.id = myId
+        // debugger;
+        if (task.isDone){
+            doneTasksList.unshift(task)
+            // doneTasksList.id = myId
+        } else{
+            unDoneTasksList.push(task)
+            // unDoneTasksList.id = myId
+        }
+    })
+
+    return doneTasksList, unDoneTasksList;
+}
+
+var keyPress = function (event){
+    if(event.code === 'Enter'){
+        addTask()
+    }
+}
+
+var createItem = function(text,itemClass,taskId){
+    var taskDiv = document.createElement('div')
+    taskDiv.innerText = text
+    taskDiv.classList = itemClass
+    var btnTrash = (createBtn('trash','trashIcon far fa-trash-alt',taskId,deleteTask))
+    var btnCheck = (createBtn('check','taskStatus fa fa-check',taskId,taskToggle))
+    taskDiv.appendChild(btnTrash)
+    taskDiv.appendChild(btnCheck)
+    return taskDiv;
+}
+
+var createBtn = function(btnClass,iconClass,taskId,btnFunction){
+    // debugger;
+    var btn = document.createElement('button')
+    btn.id = taskId
+    btn.classList = btnClass
+    btn.onclick = function () { btnFunction(this) }
+    var icon = createIcon (iconClass)
+    btn.appendChild(icon)
+    return btn
+}
+
+var createIcon = function(iconClass){
+    var icon = document.createElement('i')
+    icon.classList = iconClass
+    return icon
+}
+
+var printItems = function(){
+    // debugger;
+    var doneTaskDiv = setNode('doneTasks')
+    var unDoneTaskDiv = setNode('unDoneTasks')
+    if (tasksList.length){
+        loadTasks()
+        if (unDoneTasksList.length && doneTasksList.length){
+            printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
+            printTasks(doneTaskDiv,doneTasksList,'done')
+            deleteMsg('unDoneMsg')
+            deleteMsg('doneMsg')
+        } else if(!unDoneTasksList.length){
+            printMsg('unDoneMsg')
+            deleteMsg('doneMsg')
+            printTasks(doneTaskDiv,doneTasksList,'done')
+        } else if(!doneTasksList.length){
+            printMsg('doneMsg')
+            deleteMsg('unDoneMsg')
+            printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
+        }
+    } else{
+        printMsg('unDoneMsg')
+        printMsg('doneMsg')
+    }
+}
+
+var printMsg = function(msgId){
+    var msg = document.getElementById(msgId)
+    msg.style.display='block'
+}
+
+var deleteMsg = function(msgId){
+    var msg = document.getElementById(msgId)
+    msg.style.display='none'
+}
+
+var printTasks = function(nodeName,taskList,taskClass){
+    taskList.map(function(e){
+        var text = e.text
+        var itemClass = taskClass
+        var taskId = e.id
+        // debugger;
+        nodeName.appendChild(createItem(text,itemClass,taskId))
+    })
+}
