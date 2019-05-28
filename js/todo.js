@@ -11,7 +11,6 @@ var addTask = function(){
     if (taskText !== '' && taskText.length > 2){
         entryTask.value = ''
         tasksList.unshift({text:taskText,isDone:false})
-        console.log(tasksList)
         printItems()
     }
 }
@@ -22,7 +21,6 @@ var deleteTask = function (btn) {
 }
 
 var taskToggle = function (btn) {
-    console.log(btn)
     tasksList[btn.id].isDone = !tasksList[btn.id].isDone
     printItems()
 }
