@@ -23,7 +23,6 @@ var deleteTask = function (btn) {
 
 var taskToggle = function (btn) {
     console.log(btn)
-    // debugger;
     tasksList[btn.id].isDone = !tasksList[btn.id].isDone
     printItems()
 }
@@ -40,13 +39,11 @@ var loadTasks = function(){
     tasksList.map(function(task, index){
         var myId = index
         task.id = myId
-        // debugger;
         if (task.isDone){
             doneTasksList.unshift(task)
-            // doneTasksList.id = myId
         } else{
             unDoneTasksList.push(task)
-            // unDoneTasksList.id = myId
+    
         }
     })
 
@@ -71,7 +68,6 @@ var createItem = function(text,itemClass,taskId){
 }
 
 var createBtn = function(btnClass,iconClass,taskId,btnFunction){
-    // debugger;
     var btn = document.createElement('button')
     btn.id = taskId
     btn.classList = btnClass
@@ -88,7 +84,6 @@ var createIcon = function(iconClass){
 }
 
 var printItems = function(){
-    // debugger;
     var doneTaskDiv = setNode('doneTasks')
     var unDoneTaskDiv = setNode('unDoneTasks')
     if (tasksList.length){
@@ -128,7 +123,6 @@ var printTasks = function(nodeName,taskList,taskClass){
         var text = e.text
         var itemClass = taskClass
         var taskId = e.id
-        // debugger;
         nodeName.appendChild(createItem(text,itemClass,taskId))
     })
 }
