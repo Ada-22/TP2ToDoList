@@ -60,4 +60,9 @@ Puntos a Evaluar:
 		○ Lista.push (al final de la lista)
 		○ Lista.unshift (en la posición 0 de la lista)
 
+Realización del trabajo:
 
+Realizamos el HTML pricipalmente con todas sus clases y comentarios para poder entendernos entre nosotras.
+karin y Carmen siguieron con sass, realizando uno cada uno que despues se unio en uno general.
+Se  realizo javascript en las reunionen de clase y juntandonos.
+Se mantuvo el mismo diseño, exceptuando tamaños de letra y colores.
