@@ -1,3 +1,5 @@
+/*Eliminar las variables que no se usen. Se pueden declarar en una sola línea, 
+pero no necesariamente hay que declararlas a todas primero y después asignarles un valor.*/
 var tasksList
 var newTask
 var doneTasksList
@@ -86,6 +88,7 @@ var printItems = function(){
     var unDoneTaskDiv = setNode('unDoneTasks')
     if (tasksList.length){
         loadTasks()
+        //Este condicional se podría haber hecho en una función aparte.
         if (unDoneTasksList.length && doneTasksList.length){
             printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
             printTasks(doneTaskDiv,doneTasksList,'done')
@@ -95,7 +98,7 @@ var printItems = function(){
             printMsg('unDoneMsg')
             deleteMsg('doneMsg')
             printTasks(doneTaskDiv,doneTasksList,'done')
-        } else if(!doneTasksList.length){
+        } else if(!doneTasksList.length){ //debería ser solo "else"
             printMsg('doneMsg')
             deleteMsg('unDoneMsg')
             printTasks(unDoneTaskDiv,unDoneTasksList,'unDone')
